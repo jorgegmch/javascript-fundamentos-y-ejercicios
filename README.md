@@ -63,12 +63,6 @@ Este repositorio tiene como meta:
 
 ---
 
-## 🤝 Contribuciones
-
-Este repositorio es de uso personal académico, pero puedes abrir issues o PRs si deseas aportar mejoras o nuevas ideas.
-
----
-
 ## 📂 Estructura del repositorio
 
 ```bash
