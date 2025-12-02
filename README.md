@@ -69,12 +69,6 @@ Este repositorio es de uso personal académico, pero puedes abrir issues o PRs s
 
 ---
 
-## Autor
-
-Jorge GOmez
-
----
-
 ## 📂 Estructura del repositorio
 
 ```bash
