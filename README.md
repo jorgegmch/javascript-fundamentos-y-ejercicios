@@ -5,7 +5,7 @@ La estructura está organizada por módulos temáticos para facilitar el estudio
 
 ---
 
-## 📘 Temas incluidos
+## 🟦 Temas incluidos
 
 ### **01. Introducción a JavaScript**
 
@@ -15,9 +15,9 @@ La estructura está organizada por módulos temáticos para facilitar el estudio
 
 ### **02. Estructuras de Control**
 
-- Condicionales (`if`, `else`, `switch`)
-- Ciclos (`for`, `while`, `do while`)
-- Arreglos
+- Condicionales (`if`, `else`, `switch`)  
+- Ciclos (`for`, `while`, `do while`)  
+- Arreglos  
 - Funciones  
 
 ### **03. Estructuras de Datos**
@@ -39,6 +39,29 @@ La estructura está organizada por módulos temáticos para facilitar el estudio
 
 - Arreglos bidimensionales  
 - Recorridos y operaciones  
+
+### **07. Algoritmos de Ordenamiento y Búsqueda**
+
+- Métodos de ordenamiento básicos  
+- Búsquedas lineales y binarias  
+
+### **08. Conjuntos**
+
+- Uso de `Set`  
+- Eliminación de duplicados  
+- Operaciones con conjuntos  
+
+### **09. Maps**
+
+- Uso de `Map`  
+- Manejo de pares clave–valor  
+- Iteración y operaciones comunes  
+
+### **10. Asincronía**
+
+- Conceptos básicos de asincronía  
+- Callbacks  
+- Flujo de ejecución  
 
 ### **Ejercicios de clase**
 
@@ -66,34 +89,39 @@ Este repositorio tiene como meta:
 ## 📂 Estructura del repositorio
 
 ```bash
-JAVASCRIPT/
-│
-├── 01-Introducción-JS/
+JAVASCRIPT
+├── 01-Introducción-JS
 │   ├── 01-app.js
 │   ├── 01-holamundo-js.html
 │   ├── 02-script-externos.html
 │   └── 03-mostrar-alert.html
-│
-├── 02-estructuras/
+├── 02-estructuras
 │   ├── arrays.js
 │   ├── estructuras-condicionales.js
 │   ├── estructuras-repetitivas.js
 │   └── funciones.js
-│
-├── 03-estructura-de-datos/
+├── 03-estructura-de-datos
 │   ├── arrays.js
 │   └── objetos.js
-│
-├── 04-json/
+├── 04-json
 │   └── 01-intro-json.js
-│
-├── 05-formdata/
+├── 05-formdata
 │   ├── img/
 │   └── 01-ejemplo-formdata.html
-│
-├── 06-matrices/
+├── 06-matrices
 │   └── 01-matrices.js
-│
-└── ejercicios-clase/
-    ├── 01-instalacion-monitores.html
-    └── 02-viaje-millas-minutos.html```
+├── 07-algoritmos-ordenamiento-busqueda
+│   ├── 01-ordenamiento.js
+│   └── 02-busquedas.js
+├── 08-conjuntos
+│   └── 01-conjuntos.js
+├── 09-maps
+│   ├── 01-intro-mapas.js
+│   └── 02-mapas.js
+├── 10-asincronia
+│   ├── 01-intro-asincronia.js
+│   └── 02-callback.js
+├── ejercicios-clase
+│   ├── 01-instalacion-monitores.html
+│   └── 02-viaje-millas-minutos.html
+└── README.md```
