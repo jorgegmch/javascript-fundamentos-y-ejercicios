@@ -71,12 +71,12 @@ function dibujarTabla(campers) {
     <td>${camper.edad}</td>
     <td>${camper.sexo}</td>
     <td class="modulos">
-    ${modulosHTML}
-    <div style="margin-top: 5px; font-weight: bold; color: #0066cc;">Promedio: ${promedio}</div>
+        ${modulosHTML}
+        <div style="margin-top: 5px; font-weight: bold; color: #0066cc;">Promedio: ${promedio}</div>
     </td>
     <td class="acciones">
-    <button class="btnEditar">Editar</button>
-    <button class="btnEliminarFila">Eliminar</button>
+        <button class="btnEditar">Editar</button>
+        <button class="btnEliminarFila">Eliminar</button>
     </td>
     `;
 
@@ -111,3 +111,110 @@ function mostrarMensaje(texto, tipo) {
         mensaje.className = "mensaje";
     }, 4000);
 }
+
+function limpiarFormulario() {
+    inputId.value = "";
+    inputNombre.value = "";
+    inputEdad.value = "";
+    inputSexo.value = "";
+    inputModulos.value = "";
+}
+
+async function guardarCamper() {
+    try {
+        // obtener los valores en el formulario
+        const id = inputId.value.trim();
+        const nombre = inputNombre.value.trim();
+        const edad = parseInt(inputEdad.value);
+        const sexo = inputSexo.value.trim();
+        const modulosTxt = inputModulos.value.trim();
+
+        // validar datos
+        if (!nombre || !edad || !sexo) {
+            mostrarMensaje("Completa: Nombre, Edad y Sexo", "error");
+            return;
+        }
+
+        if (edad < 18) {
+            mostrarMensaje("La edad mínima es 18 años", "error");
+            return;
+        }
+
+        const modulos = procesarModulos(modulosTxt);
+        const camper = {
+            nombre,
+            edad,
+            sexo,
+            modulos,
+        };
+
+        if (id) {
+            await actualizarCamper(camper);
+        } else {
+            await crearCamper(camper);
+        }
+    } catch (error) {
+        mostrarMensaje(`Error: ${error.mensaje}`, "error");
+    }
+}
+
+function procesarModulos(txt) {
+    if (!txt) return [];
+
+    const lineas = txt.split("\n");
+    const modulos = [];
+    lineas.forEach((linea, indice) => {
+        linea = linea.trim();
+
+        if (linea) {
+            const partes = linea.split("-");
+            if (partes.length === 2) {
+                const nombre = partes[0].trim();
+                const puntaje = parseInt(partes[1].trim());
+
+                if (
+                    nombre &&
+                    !isNaN(puntaje) &&
+                    puntaje >= 0 &&
+                    puntaje <= 100
+                ) {
+                    modulos.push({
+                        id: indice + 1,
+                        nombre,
+                        puntaje,
+                    });
+                }
+            }
+        }
+    });
+
+    return modulos;
+}
+
+async function crearCamper(camper) {
+    try {
+        const camperCreado = await api.createCamper(camper);
+        mostrarMensaje(`Camper ${camperCreado.nombre} creado con exito`);
+        limpiarFormulario();
+        cargarCampers();
+    } catch (error) {
+        mostrarMensaje("Error al crear: " + error.message, "error");
+    }
+}
+
+async function funcionEliminarCamper(id, nombre) {
+    try {
+        const confirmar = confirm(`¿Está seguro de eliminar a ${nombre}`);
+
+        if (!confirmar)
+            return;
+    
+        await api.eliminarCamperPorId(id);
+        mostrarMensaje(`Camper ${nombre} has sido eliminado`, "exito");
+        cargarCampers();
+    } catch (error) {
+        mostrarMensaje(`Error al eliminar: ${error.message}`, "error");
+    }
+}
+
+window.addEventListener("DOMContentLoaded", cargarCampers);
